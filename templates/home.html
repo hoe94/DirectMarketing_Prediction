@@ -1,0 +1,206 @@
+<html>
+<head>
+<style>
+
+.column {
+  float: left;
+  width: 50%;
+}
+
+.column2 {
+  float: right;
+  width: 50%;
+}
+
+.footer {
+    clear: both;
+    position: relative;
+
+}
+
+.content{
+   text-align:center;
+}
+
+.label{
+ text-align:left;
+}
+
+h1 {
+   background-color:orange;
+   background-size: 300px 100px;
+   border: 2px solid black;
+}
+
+p {
+   font-family:Calibri;
+}
+
+
+</style>
+</head>
+<h1 style ="text-align:center"> Welcome to Marketing Campaign Model </h1>
+
+
+<p style = "text-align:center">
+
+This is the model used to enhance the probability of customer to subscribe the Fixed Deposit.
+
+</p>
+
+
+<div>
+     <form action="{{ url_for('predict')}}" method="post", style = "text-align:center">
+
+     <label>1. Name: </label> <input type = 'text' id = 'first' name = 'Name' required = 'required'/><br><br>
+     <label>2. Age: </label> <select id = 'second' name = 'Age' required = 'required'>
+     <option value = '' selected disabled hidden></option>
+     <option value = '1'>17-32</option>
+     <option value = '2'>32-48</option>
+     <option value = '3'>48-63</option>
+     <option value = '4'>63-79</option>
+     <option value = '5'>79 > x</option>
+     </select><br><br>
+     3. Gender:          
+     <input type="radio" name="Gender" value="Male"/>
+     <label for="male">Male</label>
+     <input type="radio" name="Gender" value="Female"/>
+     <label for="male">Female</label>
+     <input type="radio" name="Gender" value="Unknown"/> 
+     <label for="male">Unknown</label><br><br>
+     
+     <label>4. DOB (dd/mm/yyyy): </label><input type = 'date', id = 'third', name = 'Date', required="required"/><br><br>
+     <!--<label>5. Email: </label> <input type ='text' id='forth' name = 'Email'/><br><br>-->
+
+     <label>6. Marital Status: </label><select id = 'firth' name = 'Marital' required = 'required'>
+     <option value = 'single'>Single</option>
+	 <option value = 'married'>Married</option>
+	 <option value = 'divorced'>Divorced</option>
+     <option value = 'unknown'>Unknown</option>
+     </select>
+     <br><br>
+	 
+     <label>7. Education: </label><select id = 'sixth' name = 'Education' required = 'required'>
+	 <option label = ' '></option>
+     <option value = 'basic.4y'>Basic.4y</option>
+     <option value = 'basic.9y'>Basic.9y</option>
+     <option value = 'high.school'>High.School</option>
+     <option value = 'university_degree'>University.Degree</option>
+     <option value = 'professional.course'>Professional.Course</option>
+     </select>
+     <br><br>
+	 
+     <label>8. Job: </label><select id = 'seven' name = 'Job' required = 'required'>
+	 <option label = ' '></option>
+     <option value = 'admin'>admin</option>
+     <option value = 'blue-collar'>blue-collar</option>
+     <option value = 'management'>management</option>
+     <option value = 'services'>services</option>
+     <option value = 'technician'>technician</option>
+     <option value = 'others'>others</option>
+     </select>
+     <br><br>
+     
+	 
+	   <label>9. Does the customer have Credit? </label>     
+	   <input type="radio" name="Default" value="yes"/><label for="Yes">Yes</label> 
+	   <input type="radio" name="Default" value="no"/><label for="No">No</label> 
+	   <input type="radio" name="Default" value="unknown"/><label for="Unknown">Unknown</label> 
+       <br><br>    
+
+       <label>10. Does the customer have the House Loan? </label>     
+	   <input type="radio" name="Housing" value="yes"/><label for="Yes">Yes</label> 
+	   <input type="radio" name="Housing" value="no"/><label for="No">No</label>
+	   <input type="radio" name="Housing" value="unknown"/><label for="Unknown">Unknown</label> 
+       <br><br>   		
+
+       <label>11. Does the customer have the Personal Loan? </label>     
+	   <input type="radio" name="Loan" value="yes"/><label for="Yes">Yes</label> 
+	   <input type="radio" name="Loan" value="no"/><label for="No">No</label>
+	   <input type="radio" name="Loan" value="unknown"/><label for="Unknown">Unknown</label> 
+       <br><br>  
+
+       <label>12. How do you contact the customer? </label>     
+	   <input type="radio" name="Contact" value="Telephone"/><label for="Telephone">Telephone</label> 
+	   <input type="radio" name="Contact" value="Cellular"/><label for="Cellular">Cellular</label> 
+       <br><br>  
+	
+	   <label>13. When do you call the customer last time?: </label><input type = 'date', id = 'eight', name = 'Contacts', required="required"/><br><br>
+	
+
+       14. How many times of contact to this client During the campaign? <select id = 'nine' name = 'Campaign' required = 'required'>
+       <option selected disabled hidden>Select</option>
+       <option value = 1>1</option>
+       <option value = 2>2</option>
+       <option value = 3>3</option>
+       <option value = 4>4</option>
+       <option value = 5>5</option>
+       <option value = 6>6</option>
+       </select><br><br>
+       
+       15. How many times of contact to this client before the campaign? <select id = 'ten' name = 'Previous' required = 'required'>
+       <option selected disabled hidden>Select</option>
+       <option value = 0>0</option>
+       <option value = 1>1</option>
+       <option value = 2>2</option>
+       <option value = 3>3</option>
+       <option value = 4>4</option>
+       <option value = 5>5</option>
+       <option value = 6>6</option>
+       <option value = 7>7</option>
+       </select><br><br>
+       
+       16. Is this customer enroll the program from previous campaign? <select id = 'eleven' name = 'Poutcome' required = 'required'>
+       <option selected disabled hidden>Select</option>
+       <option value = 'success'>success</option>
+       <option value = 'failure'>failure</option>
+       </select><br><br>
+                                       
+       17. Employment Variation Rate [-3 to 1]: <input type = 'number' id = 'twelve' name = 'emp_var_rate' min = "-3" max = "1" required='required'/><br><br>
+       18. Consumer Price Index [92.5 to 94.5]: <input type = 'float' id = 'thirdteen' name = 'cons_price_idx', required="required"/><br><br>
+       10. Consumer Confidence index [-50 to -30 ]: <input type = 'number' id = 'fortheen' name = 'cons_conf_idx', min = "-50" max = "-30" required="required"/>	<br><br>
+       20. Euribor 3 month rate [1 to 5]: <input type = 'number' id = 'firtheen' name = 'euribor3m' min = "1" max = "5" required="required"/>	<br><br>
+       21. Number of employees [4000 to 5500]: <input type = 'number' id = 'sixtheen'name = 'nr_employed' min = "4000" max = "5500"  required="required"/><br><br>
+		
+       <input type = 'submit', value = 'Submit'/>
+	</form>
+	
+</div>
+
+<!--https://codepen.io/shahjehan/pen/VYwwOB-->
+<style>
+$(document).ready( function() {
+    let now = new Date();
+ 
+    let day = ("0" + now.getDate()).slice(-2);
+    let month = ("0" + (now.getMonth() + 1)).slice(-2);
+
+    let today = (day)+"-"+(month)+"-"+ now.getFullYear();
+
+
+   $('#firtheen').val(today);
+    
+    $('#btn2').click(function(){
+        
+        testClicked();
+        
+    });
+});
+function testClicked()
+{
+  $('.getDate').html($('#datePicker').val());
+}
+</style>
+
+<p class="getDate"></p>
+
+<div class="footer">
+   <div class="content">
+    <a href = "https://github.com/hoe94">GitHub</a>
+    <a href = "https://www.linkedin.com/in/ericlowkimhoe/">Linkedin</a> <br>
+    <p>Credit by Low Kim Hoe, October 2020</p>
+   </div>
+</div>
+ 
+ 
+</html>

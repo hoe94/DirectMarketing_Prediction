@@ -14,7 +14,7 @@ app = Flask(__name__)
 with open('model.plk','rb') as file:
     model = pickle.load(file)
 
-@app.route('/',methods=['GET'])
+@app.route('/')
 def Home():
     return render_template('home.html')
 

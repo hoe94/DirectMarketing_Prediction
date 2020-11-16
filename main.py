@@ -18,7 +18,7 @@ with open('model.plk','rb') as file:
 def Home():
     return render_template('home.html')
 
-@app.route('/predict',methods=['POST','GET'])
+@app.route('/predict',methods=['POST'])
 def predict():
     
     if request.method == "POST":
